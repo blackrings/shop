@@ -68,6 +68,10 @@ export default {
         // console.log(result)
         if (result.meta.status !== 200) return this.$message.error('登录失败')
         this.$message.success('登录成功')
+        // 将登录后的token保存到sessionStorage中
+        window.sessionStorage.setItem('token', result.data.token)
+        // 跳转页面
+        this.$router.push('/home')
       })
     }
   }
