@@ -61,8 +61,13 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     login () {
-      this.$refs.loginFormRef.validate(valid => {
-        console.log(valid)
+      // await只能用在被async修饰的方法中
+      this.$refs.loginFormRef.validate(async valid => {
+        if (!valid) return
+        const { data: result } = await this.$http.post('login', this.loginForm)
+        // console.log(result)
+        if (result.meta.status !== 200) return console.log('登录失败')
+        console.log('登录成功')
       })
     }
   }
