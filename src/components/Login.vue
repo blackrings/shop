@@ -3,32 +3,28 @@
     <div class="login_box">
       <!-- 头像区域 -->
       <div class="avatar_box">
-        <img src="../assets/logo.png"
-             alt="logo"
-             srcset />
+        <img src="../assets/logo.png" alt="logo" srcset />
       </div>
       <!-- 登录表单区域 -->
-      <el-form :model="loginForm"
-               :rules="loginFormRules"
-               ref="loginFormRef"
-               label-width="0px"
-               class="login_form">
+      <el-form
+        :model="loginForm"
+        :rules="loginFormRules"
+        ref="loginFormRef"
+        label-width="0px"
+        class="login_form"
+      >
         <!-- 账号 -->
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username"
-                    prefix-icon="el-icon-user-solid"></el-input>
+          <el-input v-model="loginForm.username" prefix-icon="el-icon-user-solid"></el-input>
         </el-form-item>
         <!-- 密码 -->
         <el-form-item prop="password">
-          <el-input type="password"
-                    v-model="loginForm.password"
-                    prefix-icon="el-icon-lock"></el-input>
+          <el-input type="password" v-model="loginForm.password" prefix-icon="el-icon-lock"></el-input>
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item class="btns">
-          <el-button type="primary">登录</el-button>
-          <el-button type="info"
-                     @click="resetLoginForm()">重置</el-button>
+          <el-button type="primary" @click="login()">登录</el-button>
+          <el-button type="info" @click="resetLoginForm()">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -63,6 +59,11 @@ export default {
     resetLoginForm () {
       // console.log(this)
       this.$refs.loginFormRef.resetFields()
+    },
+    login () {
+      this.$refs.loginFormRef.validate(valid => {
+        console.log(valid)
+      })
     }
   }
 }
