@@ -25,9 +25,9 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // to 将要访问的路径
   // from 从哪来
-  // next()放行 next('/login')强制跳转
+  // next() 放行 next('/login') 强制跳转
   if (to.path === '/login') return next()
-  // 获取token
+  // 获取 token
   const tokenStr = window.sessionStorage.getItem('token')
   if (!tokenStr) return next('/login')
   next()
