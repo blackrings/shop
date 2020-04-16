@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       // 这是登陆表单的数据绑定对象
       loginForm: {
@@ -56,11 +56,11 @@ export default {
   },
   methods: {
     // 点击重置按钮，重置登录表单
-    resetLoginForm () {
+    resetLoginForm() {
       // console.log(this)
       this.$refs.loginFormRef.resetFields()
     },
-    login () {
+    login() {
       // await只能用在被async修饰的方法中
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return
